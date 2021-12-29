@@ -1,5 +1,6 @@
 <script>
-	import * as tables from '$lib/data/tables.json';
+	import * as data from '$lib/data/tables.json';
+	let tables = data.default;
 </script>
 
 <header class="paper">
@@ -7,23 +8,24 @@
 	<h2>Content Management made Simple.</h2>
 </header>
 <section class="paper page">
-
-	{#each tables.default as table}
-		<h3 contenteditable>{table.name}</h3>
+	{#each tables as table}
+		<h3 contenteditable="true" bind:innerHTML={table.name} />
 		<table>
 			{#each table.titles as title}
-				<th contenteditable>{title}</th>
+				<th contenteditable="true" bind:innerHTML={title} />
 			{/each}
 			{#each table.data as row}
 				<tr>
 					{#each row as item}
-						<td contenteditable>{item}</td>
+						<td> <input bind:value={item} /></td>
 					{/each}
 				</tr>
 			{/each}
 		</table>
-        <hr>
+		<hr />
 	{/each}
+	<h3>Output:</h3>
+	<p>{JSON.stringify(tables)}</p>
 </section>
 
 <style>
@@ -80,11 +82,11 @@
 		margin-bottom: 0.1em;
 	}
 	table {
-        margin: 1em auto;
+		margin: 1em auto;
 	}
-    h3{
-        text-align: center;
-    }
+	h3 {
+		text-align: center;
+	}
 	tr {
 		vertical-align: text-top;
 	}
@@ -92,5 +94,9 @@
 		resize: horizontal;
 		overflow: auto;
 		border: 1px solid black;
+	}
+	p {
+		max-width: 50em;
+		margin: 1em auto;
 	}
 </style>

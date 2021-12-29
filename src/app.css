@@ -1,7 +1,7 @@
 body {
 	padding: 0;
 	margin: 0;
-	background-image: url('wood.jpg');
+	background-image: url('/static/Wood.jpg');
 	background-size: 100% auto;
 	background-repeat: repeat-y;
 	z-index: -2;

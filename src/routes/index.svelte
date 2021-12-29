@@ -1,0 +1,96 @@
+<script>
+	import * as tables from '$lib/data/tables.json';
+</script>
+
+<header class="paper">
+	<h1>Control Sheet</h1>
+	<h2>Content Management made Simple.</h2>
+</header>
+<section class="paper page">
+
+	{#each tables.default as table}
+		<h3 contenteditable>{table.name}</h3>
+		<table>
+			{#each table.titles as title}
+				<th contenteditable>{title}</th>
+			{/each}
+			{#each table.data as row}
+				<tr>
+					{#each row as item}
+						<td contenteditable>{item}</td>
+					{/each}
+				</tr>
+			{/each}
+		</table>
+        <hr>
+	{/each}
+</section>
+
+<style>
+	.paper {
+		padding: 2em;
+		background-color: #ffffff;
+		margin: 2em auto;
+		width: fit-content;
+		box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px,
+			rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px,
+			rgba(0, 0, 0, 0.09) 0px -3px 5px;
+		position: relative;
+	}
+	.paper:before,
+	.paper:after {
+		content: '';
+		height: 98%;
+		position: absolute;
+		width: 100%;
+		z-index: -1;
+	}
+	.paper:before {
+		background: #fafafa;
+		box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+		left: -5px;
+		top: 4px;
+		transform: rotate(-2.5deg);
+	}
+	.paper:after {
+		background: #f6f6f6;
+		box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+		right: -3px;
+		top: 1px;
+		transform: rotate(1.4deg);
+	}
+	.page {
+		min-width: 70%;
+		min-height: 100vw;
+		padding: 4em 3em;
+	}
+
+	header {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	h1,
+	h2 {
+		width: fit-content;
+	}
+	h1 {
+		font-size: 48px;
+		border-bottom: 2px solid;
+		margin-bottom: 0.1em;
+	}
+	table {
+        margin: 1em auto;
+	}
+    h3{
+        text-align: center;
+    }
+	tr {
+		vertical-align: text-top;
+	}
+	td {
+		resize: horizontal;
+		overflow: auto;
+		border: 1px solid black;
+	}
+</style>

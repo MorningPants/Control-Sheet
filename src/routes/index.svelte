@@ -1,11 +1,20 @@
 <script>
 	import * as data from '$lib/data/tables.json';
 	let tables = data.default;
+	function addColumn(table){
+		table.titles.push("");
+		for (let i =0; i<table.data.length; i++){
+			table.data[i].push("");
+		}
+		console.log(table)
+	};
+	function addRow(table){};
+	function addTable(){};
 </script>
 
 <header class="paper">
-	<h1>Control Sheet</h1>
-	<h2>Content Management made Simple.</h2>
+	<h1>codeBuds()</h1>
+	<h2>Learning Web Development, Together!</h2>
 </header>
 <section class="paper page">
 	{#each tables as table}
@@ -14,6 +23,7 @@
 			{#each table.titles as title}
 				<th contenteditable="true" bind:innerHTML={title} />
 			{/each}
+			<button on:click={addColumn(table)}>Add Column</button>
 			{#each table.data as row}
 				<tr>
 					{#each row as item}
@@ -21,9 +31,13 @@
 					{/each}
 				</tr>
 			{/each}
+			<tr><button on:click={addRow(table)}>Add Row</button></tr>
 		</table>
 		<hr />
 	{/each}
+	<div class="center">
+		<button on:click={addTable()}>Add Table</button>
+	</div>
 	<h3>Output:</h3>
 	<p>{JSON.stringify(tables)}</p>
 </section>
@@ -98,5 +112,9 @@
 	p {
 		max-width: 50em;
 		margin: 1em auto;
+	}
+	.center{
+		display: flex;
+		justify-content: center;
 	}
 </style>

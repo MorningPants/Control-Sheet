@@ -13,8 +13,8 @@
 </script>
 
 <header class="paper">
-	<h1>codeBuds()</h1>
-	<h2>Learning Web Development, Together!</h2>
+	<h1>The Devmakers</h1>
+	<h2>Working together to become Programming Masters!</h2>
 </header>
 <section class="paper page">
 	{#each tables as table}

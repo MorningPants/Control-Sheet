@@ -40,7 +40,7 @@
 		]
 	},
 	{
-		"name": "Team 1",
+		"name": "Team 3",
 		"titles": [ "name", "role"],
 		"data": [
 			["Andy", "Leader"]
@@ -51,6 +51,15 @@
 		"titles": [ "name", "Team"],
 		"data": [
 			["Improve this page", "Team 3"]
+		]
+	},
+	{
+		"name": "Goals",
+		"titles": [ ""],
+		"data": [
+			["To learn and share our knowledge of modern technology"],
+			["To develop our personal portfolios"],
+			["To practice working with other developers in a team setting"]
 		]
 	}
 ]

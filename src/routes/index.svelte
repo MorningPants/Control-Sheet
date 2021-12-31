@@ -1,15 +1,31 @@
 <script>
 	import * as data from '$lib/data/tables.json';
 	let tables = data.default;
-	function addColumn(table){
-		table.titles.push("");
-		for (let i =0; i<table.data.length; i++){
-			table.data[i].push("");
+	function addColumn(Table) {
+		Table.titles.push('');
+		for (let i = 0; i < Table.data.length; i++) {
+			Table.data[i].push('');
 		}
-		console.log(table)
-	};
-	function addRow(table){};
-	function addTable(){};
+		console.log(Table);
+		tables = tables;
+	}
+	function addRow(Table) {
+		let newrow = [];
+		for (let i = 0; i < Table.titles.length; i++) {
+			newrow.push('');
+		}
+		Table.data.push(newrow);
+		tables = tables;
+	}
+	function addTable(Tables) {
+		let newtable = {
+			name: 'New Table',
+			titles: ['title'],
+			data: [['']]
+		};
+		Tables.push(newtable);
+		tables = tables;
+	}
 </script>
 
 <header class="paper">
@@ -36,7 +52,7 @@
 		<hr />
 	{/each}
 	<div class="center">
-		<button on:click={addTable()}>Add Table</button>
+		<button on:click={addTable(tables)}>Add Table</button>
 	</div>
 	<h3>Output:</h3>
 	<p>{JSON.stringify(tables)}</p>
@@ -113,7 +129,7 @@
 		max-width: 50em;
 		margin: 1em auto;
 	}
-	.center{
+	.center {
 		display: flex;
 		justify-content: center;
 	}
